@@ -27,7 +27,7 @@ public class SearchController {
 
 
     @RequestMapping(value = "results")
-    public String results(Model model, @RequestParam String searchType, @RequestParam String searchTerm) { //setting  url as part of the root path->/search
+    public String results(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
 
 
             model.addAttribute("columns", ListController.columnChoices);//model prepare objects coloumns to point at coloumnChoices, serves as a key.
@@ -39,7 +39,7 @@ public class SearchController {
             model.addAttribute("jobs", jobsByVal);
 
 
-        return "search"; //presenting model info to search.html for it to process.
+        return "search"; //presenting model objects to search.html for it to process.
 
    }
 
