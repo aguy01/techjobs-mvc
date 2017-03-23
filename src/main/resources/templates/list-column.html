@@ -8,14 +8,19 @@
 
 <div class="container body-content">
 
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1> <!--on the heading, capitalizes the value of first letter of the -->
+    <!--string object of the value in the model.addAttribute, corresponds to the key title -->
 
-    <div th:if="${items} and ${items.size()}">
+        <div th:if="${items} and ${items.size()}">
 
         <table>
-            <tr th:each="item, idx : ${items}" th:class="${idx.odd} ? 'odd'">
-                <td><a th:href="@{/list/jobs(column=${column},value=${item})}" th:text="${item}"></a></td>
-            </tr>
+            <tr th:each="item, idx : ${items}" th:class="${idx.odd} ? 'odd'"> <!--each loop begins -->
+                 <td><a th:href="@{/list/jobs(column=${column},value=${item})}" th:text="${item}"></a></td>
+                <!--above {item} is in model.addAttribute("items", items). {item} is the key; -->
+                <!-- <td><a th:text="${item}"></a></td> lets print the values only without the href link -->
+
+
+            </tr> <!--loop ends -->
         </table>
 
     </div>

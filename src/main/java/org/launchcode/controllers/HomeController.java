@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.HashMap;
 
 /**
- * Created by LaunchCode
+ * Modified by  me.
  */
 @Controller
 public class HomeController {
@@ -16,7 +16,7 @@ public class HomeController {
     public String index(Model model) {
 
         HashMap<String, String> actionChoices = new HashMap<>();
-        actionChoices.put("search", "Search");
+        actionChoices.put("search", "Search");//{action.key}--> search, {action.value}-->Search
         actionChoices.put("list", "List");
 
         model.addAttribute("actions", actionChoices);

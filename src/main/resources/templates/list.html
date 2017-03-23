@@ -7,11 +7,13 @@
     <div th:replace="fragments :: page-header"></div>
 
     <div class="container body-content">
-        <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+        <h1 th:text="${#strings.capitalizeWords(title)}"></h1> <!--on the heading, capitalizes the value of first letter of the -->
+        <!--string object of the value in the model.addAttribute, corresponds to the key title -->
         <h2>View All</h2>
         <ul>
             <li th:each="column : ${columns}">
                 <a th:href="@{/list/values(column=${column.key})}" th:text="${column.value}"></a>
+
             </li>
         </ul>
     </div>

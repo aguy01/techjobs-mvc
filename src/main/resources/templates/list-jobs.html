@@ -12,6 +12,9 @@
 
     <!-- TODO #3 - Use the same list display from search.html -->
 
+    <div th:replace="search :: print-list"></div><!--fragments/reuse of code from search.html, with model.addAttribute()
+    must have the same key in both places -->
+
 </div>
 
 </body>
