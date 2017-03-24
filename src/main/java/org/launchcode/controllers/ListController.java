@@ -48,6 +48,7 @@ public class ListController {//a Controller; also handler
             model.addAttribute("title", "All Jobs"); // model is a map, an object. key/value pair or dictionary. enables springboot to communicates with Thymeleaf.
             //works similar to model as a java.util.Map.
             model.addAttribute("jobs", jobs);
+            model.addAttribute("size",jobs.size());
             return "list-jobs"; //presenting model objects to list-jobs.html. for it to process the info there.
         } else {
             ArrayList<String> items = JobData.findAll(column);
@@ -69,6 +70,7 @@ public class ListController {//a Controller; also handler
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value); // heading to be used in the body of hte page.
         model.addAttribute("jobs", jobs);
+
 
         return "list-jobs"; //presenting model objects to list-jobs.html. for it to process info there.
     }
