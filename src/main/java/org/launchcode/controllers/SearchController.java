@@ -42,9 +42,9 @@ public class SearchController {
             model.addAttribute("jobs", jobsByVal);
             }
         else {//other than 'all' selected.
-            ArrayList<HashMap<String, String>> jobsByVal = JobData.findByColumnAndValue(searchType, searchTerm);
-            model.addAttribute("size", jobsByVal.size());
-            model.addAttribute("jobs", jobsByVal);
+            ArrayList<HashMap<String, String>> jobsByColAndVal = JobData.findByColumnAndValue(searchType, searchTerm);
+            model.addAttribute("size", jobsByColAndVal.size());
+            model.addAttribute("jobs", jobsByColAndVal);
             }
 
         return "search"; //presenting model objects to search.html for it to process.
