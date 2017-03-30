@@ -24,27 +24,25 @@ public class SearchController {
 
     // TODO #1 - Create handler to process search request and display results
 
-
+    private static ArrayList<HashMap<String, String>> jobsBySearch = new ArrayList<HashMap<String, String>>();
 
     @RequestMapping(value = "results")
-    public String results(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
-
+    public String results(Model model, @RequestParam String searchType, String searchTerm) {
 
             model.addAttribute("columns", ListController.columnChoices);//model prepare objects coloumns to point at coloumnChoices, serves as a key.
 
 
-
-
         if (searchType.equals("all")) {//if all selected.
-            ArrayList<HashMap<String, String>> jobsByVal = JobData.findByValue(searchTerm);// searchTerm is evaluated and assigned.
-
-            model.addAttribute("size", jobsByVal.size());
-            model.addAttribute("jobs", jobsByVal);
+            //ArrayList<HashMap<String, String>> jobsByVal = JobData.findByValue(searchTerm);// searchTerm is evaluated and assigned.
+            jobsBySearch = JobData.findByValue(searchTerm);
+            model.addAttribute("size", jobsBySearch.size());
+            model.addAttribute("jobs", jobsBySearch);
             }
         else {//other than 'all' selected.
-            ArrayList<HashMap<String, String>> jobsByColAndVal = JobData.findByColumnAndValue(searchType, searchTerm);
-            model.addAttribute("size", jobsByColAndVal.size());
-            model.addAttribute("jobs", jobsByColAndVal);
+            //ArrayList<HashMap<String, String>> jobsByColAndVal = JobData.findByColumnAndValue(searchType, searchTerm);
+            jobsBySearch =  JobData.findByColumnAndValue(searchType, searchTerm);
+            model.addAttribute("size", jobsBySearch.size());
+            model.addAttribute("jobs", jobsBySearch);
             }
 
         return "search"; //presenting model objects to search.html for it to process.
