@@ -29,30 +29,21 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String results(Model model, @RequestParam String searchType, String searchTerm) {
 
-            model.addAttribute("columns", ListController.columnChoices);//model prepare objects coloumns to point at coloumnChoices, serves as a key.
+        model.addAttribute("columns", ListController.columnChoices);//model prepare objects coloumns to point at coloumnChoices, serves as a key.
 
 
         if (searchType.equals("all")) {//if all selected.
-            //ArrayList<HashMap<String, String>> jobsByVal = JobData.findByValue(searchTerm);// searchTerm is evaluated and assigned.
             jobsBySearch = JobData.findByValue(searchTerm);
             model.addAttribute("size", jobsBySearch.size());
             model.addAttribute("jobs", jobsBySearch);
-            }
-        else {//other than 'all' selected.
-            //ArrayList<HashMap<String, String>> jobsByColAndVal = JobData.findByColumnAndValue(searchType, searchTerm);
-            jobsBySearch =  JobData.findByColumnAndValue(searchType, searchTerm);
+        } else {//other than 'all' selected.
+            jobsBySearch = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("size", jobsBySearch.size());
             model.addAttribute("jobs", jobsBySearch);
-            }
+        }
 
         return "search"; //presenting model objects to search.html for it to process.
 
-   }
-
-
-
-
-
-
+    }
 
 }
